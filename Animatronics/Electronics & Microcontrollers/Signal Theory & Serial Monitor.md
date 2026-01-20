@@ -1,11 +1,11 @@
 Lesson 1: The Robot's Voice (Serial Communication)
 --------------------------------------------------
 
-### 1\. The Hook
+### 1\. Introduction
 
 Ask the question: *"How do we know what a robot is thinking?"* Explain that unlike a computer screen, a microcontroller like the **Mega 2560** is "blind" and "silent" unless we give it a way to talk to us. Today, we build that bridge.
 
-### 2\. The Setup (15 Minutes)
+### 2\. Setup
 
 Have everyone open **VS Code** and initialize their first **PlatformIO** project.
 
