@@ -17,6 +17,17 @@ Have everyone open **VS Code** and initialize their first **PlatformIO** project
 
     -   `void loop()`: Runs **forever** (like breathing or a heart beating).
 
+-   **Install PlatformIO (pip):**
+```
+   python -m pip install --upgrade pip
+   python -m pip install platformio
+```
+
+-   **Create a new project for Arduino Mega 2560:**
+```
+  platformio project init --board=megaatmega2560 --project-dir my_robot
+```
+
 ### 3\. The Coding Activity (20 Minutes)
 
 Have students type the following into their `main.cpp`. Avoid copy-pasting so they build "muscle memory" for syntax like semicolons.
