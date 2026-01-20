@@ -769,7 +769,7 @@ if (user) {
 }
 ```
 
-### Part 3: Advanced Concepts & Configuration
+### 3. Advanced Concepts & Configuration
 
 **Generics Fundamentals**
 -   What are generics and why use them?
@@ -1246,7 +1246,7 @@ const article: Article = {
 logEntity(article); // ✅ Works - has both id and timestamps
 ```
 
-### tsconfig.json Deep Dive
+### 4. tsconfig.json Deep Dive
 
 -   Creating tsconfig: tsc --init
 -   Essential compiler options:
