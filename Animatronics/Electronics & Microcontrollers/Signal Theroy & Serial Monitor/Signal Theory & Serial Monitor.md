@@ -78,13 +78,13 @@ Play with changing the text in Serial.println.
 🔨 Exercise
 ------------------------------
 
-### Parts needed
+**Parts needed**
   - Board and Breadboard
   - 2 wires
   - 1 LED
   - 1 100Ω resistor
 
-### Code
+**Code**
 ```C++
 #include <Arduino.h>
 
@@ -129,12 +129,13 @@ void loop()
 	count += 1;
 }
 
+**Example**
+
 ```
-### Example
 ![example](files/example1.jpg)
 
 
-### Test
+**Test**
 - Press Y, Press N to see what happens
 - Change values to see how the logic changes
 - Understand what the if condition is doing and 
