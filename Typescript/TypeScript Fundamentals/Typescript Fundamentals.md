@@ -3,7 +3,9 @@ Typescript Fundamentals
 
 ### Overview
 **Focus:** Type system and configuration
+
 **Format:** Theory + Hands-on exercises
+
 **Mosh Course:** Complete Sections 1-4 (accelerated pace)
 
 ### 1\. Introduction & Setup
