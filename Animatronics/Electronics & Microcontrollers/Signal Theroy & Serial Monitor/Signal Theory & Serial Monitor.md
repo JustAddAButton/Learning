@@ -26,7 +26,7 @@ Have everyone open **VS Code** and initialize their first **PlatformIO** project
 -   **Create a new project for Arduino Mega 2560:**
  - Click the left nave PlatformIO icon and follow steps to creating new project.
 
-### 3\. The Coding Activity (20 Minutes)
+### 3\. The Coding Activity
 
 Type the following into their `src\main.cpp`. Avoid copy-pasting to build "muscle memory" for syntax like semicolons.
 
@@ -49,7 +49,7 @@ void loop() {
 
 Play with changing the text in Serial.println.
 
-### 4\. Hardware Connection (10 Minutes)
+### 4\. Hardware Connection
 
 -   Connect the **USB Cable** to the ELEGOO Mega R3 Board.
 
@@ -132,3 +132,9 @@ void loop()
 ```
 ### Example
 ![example](files/example1.jpg)
+
+
+### Test
+- Press Y, Press N to see what happens
+- Change values to see how the logic changes
+- Understand what the if condition is doing and 
