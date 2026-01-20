@@ -64,7 +64,7 @@ void loop() {
 📺 Recommended Class Resource
 -----------------------------
 
--   **[How to use the Arduino Serial Monitor](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3DgM6uO6s82H4)**
+-   **[How to use the Arduino Serial Monitor](https://www.youtube.com/watch?v=j2qrRxQ9mSs)**
 
     -   **Classroom Use:** Play the first 3 minutes of this video to show students what the "output" should look like once they hit upload.
 
