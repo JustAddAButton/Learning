@@ -9,7 +9,7 @@ Ask the question: *"How do we know what a robot is thinking?"* Explain that unli
 
 Have everyone open **VS Code** and initialize their first **PlatformIO** project.
 
--   **Target Board:** Arduino Mega 2560 (from the ELEGOO Mega R3 Ultimate Kit.
+-   **Target Board:** Arduino Mega 2560 (from the ELEGOO Mega R3 Ultimate Kit.)
 
 -   **The Anatomy of a Script:** Explain the two "rooms" of a C++ script:
 
@@ -24,17 +24,13 @@ Have everyone open **VS Code** and initialize their first **PlatformIO** project
 ```
 
 -   **Create a new project for Arduino Mega 2560:**
-```
-  platformio project init --board=megaatmega2560 --project-dir my_robot
-```
+ - Click the left nave PlatformIO icon and follow steps to creating new project.
 
 ### 3\. The Coding Activity (20 Minutes)
 
-Have students type the following into their `main.cpp`. Avoid copy-pasting so they build "muscle memory" for syntax like semicolons.
+Type the following into their `src\main.cpp`. Avoid copy-pasting to build "muscle memory" for syntax like semicolons.
 
-C++
-
-```
+```C++
 #include <Arduino.h>
 
 void setup() {
@@ -51,13 +47,13 @@ void loop() {
 
 ```
 
+Play with changing the text in Serial.println.
+
 ### 4\. Hardware Connection (10 Minutes)
 
 -   Connect the **USB Cable** to the ELEGOO Mega R3 Board.
 
--   Click the **Upload (→)** arrow in the blue VS Code status bar.
-
--   Click the **Serial Monitor (Plug icon)**.
+-   Expand the PlatformIO pane and click the project tasks in the General folder **Build then Upload and Monitor**.
 
 * * * * *
 
@@ -79,15 +75,60 @@ void loop() {
 
     -   **Classroom Use:** Play the first 3 minutes of this video to show students what the "output" should look like once they hit upload.
 
-* * * * *
+🔨 Exercise
+------------------------------
 
-✅ Day 1 Learning Check
-----------------------
+### Parts needed
+  - Board and Breadboard
+  - 2 wires
+  - 1 LED
+  - 1 100Ω resistor
 
-Before they leave, every student should be able to:
+### Code
+```C++
+#include <Arduino.h>
 
-1.  Identify the **USB-B port** on their Mega board.
+int redLedPin = 2; // Pin Red LED is connected to
+int count = 0;
 
-2.  Change the text in `Serial.println` to their own custom "Robot Name."
+void setup()
+{
+	pinMode(redLedPin, OUTPUT); // Set led pin to output
+	Serial.begin(9600);			// Set serial to the 9600 band
+	while (!Serial); // Allow serial to initialise
+	Serial.println("Enter Y to turn on the LED:");
+}
 
-3.  Successfuly **Upload** and see that name appearing on their screen.
+void loop()
+{
+	if (Serial.available())
+	{
+		char ch = Serial.read();
+		if (ch == 'y' || ch == 'Y')
+		{
+			digitalWrite(redLedPin, HIGH);
+			Serial.println("You have turned on the LED!!");
+			Serial.print("The LED was off for ");
+			Serial.print(count);
+			Serial.println(" seconds");
+			Serial.println("If you want to switch it off, simply enter N or n!");
+			count = 0;
+		}
+		if (ch == 'n' || ch == 'N')
+		{
+			digitalWrite(redLedPin, LOW);
+			Serial.println("You have turned off the LED!!");
+			Serial.print("The LED was on for ");
+			Serial.print(count);
+			Serial.println(" seconds");
+			Serial.println("If you want to switch it on, simply enter Y or y!");
+			count = 0;
+		}
+	}
+	delay(1000);
+	count += 1;
+}
+
+```
+### Example
+![example](files/example1.jpg)
