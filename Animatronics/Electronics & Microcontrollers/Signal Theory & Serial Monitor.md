@@ -1,4 +1,4 @@
-🏫 Day 1: The Robot's Voice (Serial Communication)
+Lesson 1: The Robot's Voice (Serial Communication)
 --------------------------------------------------
 
 ### 1\. The Hook (5 Minutes)
