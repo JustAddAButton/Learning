@@ -81,6 +81,57 @@ Experiment by:
     -   Long leg (anode) → Pin 9 (PWM pin) with 100Ω resistor in series
     -   Short leg (cathode) → GND
 
+**Breadboard Schematic (Single LED Setup):**
+
+```
+Arduino Mega 2560                     Breadboard
+┌──────────────────┐                ┌─────────────────────────────┐
+│                  │                │                             │
+│  5V ─────────────┼────────────────┤ + (Power rail)              │
+│                  │                │                             │
+│  GND ────────────┼────────────────┤ - (Ground rail)             │
+│                  │                │                             │
+│  A0 (analog) ────┼────────────────┤ Row with middle pot pin     │
+│                  │                │                             │
+│  Pin 9 (PWM) ────┼────┬───────────┤ Row with resistor/LED      │
+│                  │    │           │                             │
+└──────────────────┘    │           └─────────────────────────────┘
+                        │
+                        │
+                    ┌───┴──────────────────────────────────┐
+                    │ Potentiometer Connections:           │
+                    │ Left pin ──→ + (5V)                  │
+                    │ Middle pin ─→ A0                     │
+                    │ Right pin ──→ - (GND)                │
+                    │                                      │
+                    │ LED Setup:                           │
+                    │ Resistor (100Ω) ─→ LED + leg        │
+                    │ LED - leg ────────→ GND rail        │
+                    │ Resistor other end ─→ Pin 9         │
+                    └────────────────────────────────────┘
+```
+
+**Quick Reference Diagram:**
+
+```
+    5V ├─────────────────────┐
+       │                     │
+     [POT]                   │
+       │                     │
+    GND ├─────────────────────┤
+       │                     │
+       │                   [RES]
+       │                     │
+      A0│                    LED
+       │                     │
+    Pin9│                    GND
+```
+
+Where:
+- `[POT]` = Potentiometer (10kΩ)
+- `[RES]` = Resistor (100Ω or 220Ω)
+- `LED` = Light Emitting Diode (long leg to resistor, short leg to GND)
+
 -   Click **Build** then **Upload and Monitor** in the PlatformIO pane.
 
 * * * * *
@@ -120,6 +171,42 @@ Experiment by:
   - 2 LEDs (different colors if available)
   - 2 resistors (100Ω or 220Ω each)
   - 7 wires
+
+**Breadboard Schematic (Dual LED Setup):**
+
+```
+Arduino Mega 2560                     Breadboard
+┌──────────────────┐                ┌─────────────────────────────┐
+│                  │                │                             │
+│  5V ─────────────┼────────────────┤ + (Power rail)              │
+│                  │                │                             │
+│  GND ────────────┼────────────────┤ - (Ground rail)             │
+│                  │                │                             │
+│  A0 (analog) ────┼────────────────┤ Row with middle pot pin     │
+│                  │                │                             │
+│  Pin 9 (PWM) ────┼────┬───────────┤ Row with Red LED setup      │
+│                  │    │           │                             │
+│  Pin 10 (PWM) ───┼────┼───────────┤ Row with Green LED setup    │
+│                  │    │           │                             │
+└──────────────────┘    │           └─────────────────────────────┘
+                        │
+         ┌──────────────┴─────────────────────────────┐
+         │ Potentiometer (Same as before):            │
+         │ Left pin ──→ + (5V)                        │
+         │ Middle pin ─→ A0                           │
+         │ Right pin ──→ - (GND)                      │
+         │                                            │
+         │ Red LED Setup:                             │
+         │ Resistor 1 (100Ω) ─→ Red LED + leg        │
+         │ Red LED - leg ──────→ GND rail             │
+         │ Resistor 1 other end ─→ Pin 9             │
+         │                                            │
+         │ Green LED Setup:                           │
+         │ Resistor 2 (100Ω) ─→ Green LED + leg      │
+         │ Green LED - leg ────→ GND rail             │
+         │ Resistor 2 other end ─→ Pin 10            │
+         └────────────────────────────────────────────┘
+```
 
 **Code Challenge:**
 ```C++
