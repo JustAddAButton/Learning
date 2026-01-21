@@ -81,56 +81,46 @@ Experiment by:
     -   Long leg (anode) → Pin 9 (PWM pin) with 100Ω resistor in series
     -   Short leg (cathode) → GND
 
-**Breadboard Schematic (Single LED Setup):**
+**Breadboard Schematic (Single LED Setup) — with breadboard positions:**
 
-```
-Arduino Mega 2560                     Breadboard
-┌──────────────────┐                ┌─────────────────────────────┐
-│                  │                │                             │
-│  5V ─────────────┼────────────────┤ + (Power rail)              │
-│                  │                │                             │
-│  GND ────────────┼────────────────┤ - (Ground rail)             │
-│                  │                │                             │
-│  A0 (analog) ────┼────────────────┤ Row with middle pot pin     │
-│                  │                │                             │
-│  Pin 9 (PWM) ────┼────┬───────────┤ Row with resistor/LED       │
-│                  │    │           │                             │
-└──────────────────┘    │           └─────────────────────────────┘
-                        │
-                        │
-                    ┌───┴──────────────────────────────────┐
-                    │ Potentiometer Connections:           │
-                    │ Left pin ──→ + (5V)                  │
-                    │ Middle pin ─→ A0                     │
-                    │ Right pin ──→ - (GND)                │
-                    │                                      │
-                    │ LED Setup:                           │
-                    │ Resistor (100Ω) ─→ LED + leg         │
-                    │ LED - leg ────────→ GND rail         │
-                    │ Resistor other end ─→ Pin 9          │
-                    └──────────────────────────────────────┘
-```
+```mermaid
+flowchart TD
+  subgraph ARD ["Arduino Mega 2560 (header side)"]
+    A5["5V pin"]
+    AG["GND pin"]
+    A0pin["A0 (analog)"]
+    D9["Pin 9 (PWM)"]
+  end
 
-**Quick Reference Diagram:**
+  subgraph BB ["Breadboard (rows 1..30, cols a..j)"]
+    PR["+ 5V rail (row 1, cols a-j)"]
+    GR["- GND rail (row 30, cols a-j)"]
+    PotL["Pot left — row 10, col d (connect to 5V)"]
+    PotM["Pot middle — row 10, col e (connect to A0)"]
+    PotR["Pot right — row 10, col f (connect to GND)"]
+    Res["Resistor 100Ω — row 15, cols e-f (one end to Pin 9 wire)"]
+    LED["LED anode — row 15, col f; cathode — row 15, col g (to GND rail)"]
+  end
 
-```
-    5V ├─────────────────────┐
-       │                     │
-     [POT]                   │
-       │                     │
-   GND ├─────────────────────┤
-       │                     │
-       │                   [RES]
-       │                     │
-     A0│                    LED
-       │                     │
-   Pin9│                    GND
-```
+  %% Arduino to breadboard jumpers (explicit wires)
+  A5 -->|"Wire: Arduino 5V -> + rail (use jumper to row 1, col a)"| PR
+  AG -->|"Wire: Arduino GND -> - rail (use jumper to row 30, col a)"| GR
+  A0pin -->|"Wire: Arduino A0 -> Pot middle (row10 col e)"| PotM
+  D9 -->|"Wire: Arduino D9 -> Resistor end (row15 col e)"| Res
 
-Where:
-- `[POT]` = Potentiometer (10kΩ)
-- `[RES]` = Resistor (100Ω or 220Ω)
-- `LED` = Light Emitting Diode (long leg to resistor, short leg to GND)
+  %% Pot connections on breadboard
+  PR -->|"left pot pin -> row10 col d"| PotL
+  PotL --- PotM
+  PotM --- PotR
+  GR -->|"right pot pin -> row10 col f"| PotR
+
+  %% Resistor + LED to GND
+  Res --> LED
+  LED -->|"cathode -> GND rail (row30 col a-j)"| GR
+
+  classDef hw fill:#f9f,stroke:#333;
+  class ARD,BB hw;
+```
 
 -   Click **Build** then **Upload and Monitor** in the PlatformIO pane.
 
@@ -154,11 +144,11 @@ Where:
 📺 Recommended Class Resource
 -----------------------------
 
--   **[Understanding Analog Input on Arduino](https://www.youtube.com/watch?v=BU-MqLaE0qI)**
+-   **[Understanding Analog Input on Arduino](https://youtu.be/BMMnOAzcqoE?si=1yGkaIRhWmqqCtSA)**
 
     -   **Classroom Use:** Play the first 4 minutes to show how potentiometers work and what the Serial Monitor should display.
 
--   **[PWM (Pulse Width Modulation) Explained](https://www.youtube.com/watch?v=yzV6qI8VJHA)**
+-   **[Pulse Width Modulation (PWM) - Electronics Basics 23](https://youtu.be/GQLED3gmONg?si=Fi3Is3n1VJyJlO1U)**
 
     -   **Classroom Use:** Play this to help students understand why PWM makes the LED appear to have different brightness levels.
 
@@ -172,40 +162,49 @@ Where:
   - 2 resistors (100Ω or 220Ω each)
   - 7 wires
 
-**Breadboard Schematic (Dual LED Setup):**
+**Breadboard Schematic (Dual LED Setup) — with breadboard positions:**
 
-```
-Arduino Mega 2560                     Breadboard
-┌──────────────────┐                ┌─────────────────────────────┐
-│                  │                │                             │
-│  5V ─────────────┼────────────────┤ + (Power rail)              │
-│                  │                │                             │
-│  GND ────────────┼────────────────┤ - (Ground rail)             │
-│                  │                │                             │
-│  A0 (analog) ────┼────────────────┤ Row with middle pot pin     │
-│                  │                │                             │
-│  Pin 9 (PWM) ────┼────┬───────────┤ Row with Red LED setup      │
-│                  │    │           │                             │
-│  Pin 10 (PWM) ───┼────┼───────────┤ Row with Green LED setup    │
-│                  │    │           │                             │
-└──────────────────┘    │           └─────────────────────────────┘
-                        │
-         ┌──────────────┴─────────────────────────────┐
-         │ Potentiometer (Same as before):            │
-         │ Left pin ──→ + (5V)                        │
-         │ Middle pin ─→ A0                           │
-         │ Right pin ──→ - (GND)                      │
-         │                                            │
-         │ Red LED Setup:                             │
-         │ Resistor 1 (100Ω) ─→ Red LED + leg         │
-         │ Red LED - leg ──────→ GND rail             │
-         │ Resistor 1 other end ─→ Pin 9              │
-         │                                            │
-         │ Green LED Setup:                           │
-         │ Resistor 2 (100Ω) ─→ Green LED + leg       │
-         │ Green LED - leg ────→ GND rail             │
-         │ Resistor 2 other end ─→ Pin 10             │
-         └────────────────────────────────────────────┘
+```mermaid
+flowchart TD
+  subgraph ARD ["Arduino Mega 2560 (header side)"]
+    A5["5V pin"]
+    AG["GND pin"]
+    A0pin["A0 (analog)"]
+    D9["Pin 9 (PWM)"]
+    D10["Pin 10 (PWM)"]
+  end
+
+  subgraph BB ["Breadboard (rows 1..30, cols a..j)"]
+    PR["+ 5V rail (row 1, cols a-j)"]
+    GR["- GND rail (row 30, cols a-j)"]
+    PotL["Pot left — row 10, col d (connect to 5V)"]
+    PotM["Pot middle — row 10, col e (connect to A0)"]
+    PotR["Pot right — row 10, col f (connect to GND)"]
+    R1["Resistor1 100Ω — row 15, cols e-f (to Pin 9)"]
+    LED1["Red LED anode — row15 col f; cathode — row15 col g (to GND)"]
+    R2["Resistor2 100Ω — row 17, cols e-f (to Pin 10)"]
+    LED2["Green LED anode — row17 col f; cathode — row17 col g (to GND)"]
+  end
+
+  %% Arduino to breadboard jumpers
+  A5 -->|"Wire: Arduino 5V -> + rail (row1 col a)"| PR
+  AG -->|"Wire: Arduino GND -> - rail (row30 col a)"| GR
+  A0pin -->|"Wire: Arduino A0 -> Pot middle (row10 col e)"| PotM
+  D9 -->|"Wire: Arduino D9 -> Resistor1 row15 col e"| R1
+  D10 -->|"Wire: Arduino D10 -> Resistor2 row17 col e"| R2
+
+  %% Pot connections
+  PR -->|"left pot pin -> row10 col d"| PotL
+  PotL --- PotM
+  PotM --- PotR
+  GR -->|"right pot pin -> row10 col f"| PotR
+
+  %% LEDs to GND
+  R1 --> LED1 -->|"cathode -> GND rail (row30 cols)"| GR
+  R2 --> LED2 -->|"cathode -> GND rail (row30 cols)"| GR
+
+  classDef hw fill:#f9f,stroke:#333;
+  class ARD,BB hw;
 ```
 
 **Code Challenge:**
