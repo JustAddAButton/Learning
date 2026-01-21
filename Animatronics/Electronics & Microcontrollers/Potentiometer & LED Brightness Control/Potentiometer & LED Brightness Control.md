@@ -83,54 +83,39 @@ Experiment by:
 
 **Breadboard Schematic (Single LED Setup):**
 
+```mermaid
+graph TD
+    A["🔌 Arduino Mega 2560"] 
+    B["⚡ 5V"]
+    C["⏚ GND"]
+    D["📊 A0 Analog Pin"]
+    E["🔌 Pin 9 PWM"]
+    F["⚙️ Potentiometer 10kΩ"]
+    G["🛠️ 100Ω Resistor"]
+    H["💡 LED"]
+    
+    A --> B
+    A --> C
+    A --> D
+    A --> E
+    
+    B --> |"Left Pin"| F
+    F --> |"Middle Pin"| D
+    F --> |"Right Pin"| C
+    
+    E --> G
+    G --> H
+    H --> C
+    
+    style A fill:#4a90e2,stroke:#2c5aa0,color:#fff
+    style B fill:#ffb84d,stroke:#e6a000,color:#000
+    style C fill:#333,stroke:#000,color:#fff
+    style D fill:#7ed321,stroke:#5fa018,color:#000
+    style E fill:#7ed321,stroke:#5fa018,color:#000
+    style F fill:#f5a623,stroke:#d68910,color:#fff
+    style G fill:#bd10e0,stroke:#8b0aa8,color:#fff
+    style H fill:#ff0000,stroke:#cc0000,color:#fff
 ```
-Arduino Mega 2560                     Breadboard
-┌──────────────────┐                ┌─────────────────────────────┐
-│                  │                │                             │
-│  5V ─────────────┼────────────────┤ + (Power rail)              │
-│                  │                │                             │
-│  GND ────────────┼────────────────┤ - (Ground rail)             │
-│                  │                │                             │
-│  A0 (analog) ────┼────────────────┤ Row with middle pot pin     │
-│                  │                │                             │
-│  Pin 9 (PWM) ────┼────┬───────────┤ Row with resistor/LED      │
-│                  │    │           │                             │
-└──────────────────┘    │           └─────────────────────────────┘
-                        │
-                        │
-                    ┌───┴──────────────────────────────────┐
-                    │ Potentiometer Connections:           │
-                    │ Left pin ──→ + (5V)                  │
-                    │ Middle pin ─→ A0                     │
-                    │ Right pin ──→ - (GND)                │
-                    │                                      │
-                    │ LED Setup:                           │
-                    │ Resistor (100Ω) ─→ LED + leg        │
-                    │ LED - leg ────────→ GND rail        │
-                    │ Resistor other end ─→ Pin 9         │
-                    └────────────────────────────────────┘
-```
-
-**Quick Reference Diagram:**
-
-```
-    5V ├─────────────────────┐
-       │                     │
-     [POT]                   │
-       │                     │
-    GND ├─────────────────────┤
-       │                     │
-       │                   [RES]
-       │                     │
-      A0│                    LED
-       │                     │
-    Pin9│                    GND
-```
-
-Where:
-- `[POT]` = Potentiometer (10kΩ)
-- `[RES]` = Resistor (100Ω or 220Ω)
-- `LED` = Light Emitting Diode (long leg to resistor, short leg to GND)
 
 -   Click **Build** then **Upload and Monitor** in the PlatformIO pane.
 
@@ -174,38 +159,49 @@ Where:
 
 **Breadboard Schematic (Dual LED Setup):**
 
-```
-Arduino Mega 2560                     Breadboard
-┌──────────────────┐                ┌─────────────────────────────┐
-│                  │                │                             │
-│  5V ─────────────┼────────────────┤ + (Power rail)              │
-│                  │                │                             │
-│  GND ────────────┼────────────────┤ - (Ground rail)             │
-│                  │                │                             │
-│  A0 (analog) ────┼────────────────┤ Row with middle pot pin     │
-│                  │                │                             │
-│  Pin 9 (PWM) ────┼────┬───────────┤ Row with Red LED setup      │
-│                  │    │           │                             │
-│  Pin 10 (PWM) ───┼────┼───────────┤ Row with Green LED setup    │
-│                  │    │           │                             │
-└──────────────────┘    │           └─────────────────────────────┘
-                        │
-         ┌──────────────┴─────────────────────────────┐
-         │ Potentiometer (Same as before):            │
-         │ Left pin ──→ + (5V)                        │
-         │ Middle pin ─→ A0                           │
-         │ Right pin ──→ - (GND)                      │
-         │                                            │
-         │ Red LED Setup:                             │
-         │ Resistor 1 (100Ω) ─→ Red LED + leg        │
-         │ Red LED - leg ──────→ GND rail             │
-         │ Resistor 1 other end ─→ Pin 9             │
-         │                                            │
-         │ Green LED Setup:                           │
-         │ Resistor 2 (100Ω) ─→ Green LED + leg      │
-         │ Green LED - leg ────→ GND rail             │
-         │ Resistor 2 other end ─→ Pin 10            │
-         └────────────────────────────────────────────┘
+```mermaid
+graph TD
+    A["🔌 Arduino Mega 2560"] 
+    B["⚡ 5V"]
+    C["⏚ GND"]
+    D["📊 A0 Analog Pin"]
+    E["🔌 Pin 9 PWM"]
+    F["🔌 Pin 10 PWM"]
+    G["⚙️ Potentiometer 10kΩ"]
+    R["🛠️ Resistor 1 100Ω"]
+    LED1["🔴 Red LED"]
+    RES2["🛠️ Resistor 2 100Ω"]
+    LED2["🟢 Green LED"]
+    
+    A --> B
+    A --> C
+    A --> D
+    A --> E
+    A --> F
+    
+    B --> |"Left Pin"| G
+    G --> |"Middle Pin"| D
+    G --> |"Right Pin"| C
+    
+    E --> R
+    R --> LED1
+    LED1 --> C
+    
+    F --> RES2
+    RES2 --> LED2
+    LED2 --> C
+    
+    style A fill:#4a90e2,stroke:#2c5aa0,color:#fff
+    style B fill:#ffb84d,stroke:#e6a000,color:#000
+    style C fill:#333,stroke:#000,color:#fff
+    style D fill:#7ed321,stroke:#5fa018,color:#000
+    style E fill:#7ed321,stroke:#5fa018,color:#000
+    style F fill:#7ed321,stroke:#5fa018,color:#000
+    style G fill:#f5a623,stroke:#d68910,color:#fff
+    style R fill:#bd10e0,stroke:#8b0aa8,color:#fff
+    style LED1 fill:#ff4444,stroke:#cc0000,color:#fff
+    style RES2 fill:#bd10e0,stroke:#8b0aa8,color:#fff
+    style LED2 fill:#44ff44,stroke:#00cc00,color:#000
 ```
 
 **Code Challenge:**
