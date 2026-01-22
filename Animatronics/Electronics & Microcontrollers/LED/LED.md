@@ -2,8 +2,7 @@
 
 ### Overview
 
-In this lesson, you will learn how to change the brightness of an LED by using
-different values of resistor.
+In this lesson, you will learn how to change the brightness of an LED by using different values of resistor.
 
 ### Component Required:
 
@@ -18,45 +17,21 @@ different values of resistor.
 
 #### BREADBOARD MB-102 ：
 
-A breadboard enables you to prototype circuits quickly, without having to solder
-the connections. Below is an example.
+A breadboard enables you to prototype circuits quickly, without having to solder the connections. Below is an example.
 
 ![example](files/1.jpg)
 
 
-Breadboards come in various sizes and configurations. The simplest kind is just a
-grid of holes in a plastic block. Inside are strips of metal that provide electrical
-connection between holes in the shorter rows. Pushing the legs of two different
-components into the same row joins them together electrically. A deep channel
-running down the middle indicates that there is a break in connections there,
-meaning, you can push a chip in with the legs at either side of the channel without
-connecting them together. Some breadboards have two strips of holes running
-along the long edges of the board that are separated from the main grid. These have
-strips running down the length of the board inside and provide a way to connect a
-common voltage. They are usually in pairs for +5 volts and ground. These strips are
-referred to as rails and they enable you to connect power to many components or
-points in the board.
-While breadboards are great for prototyping, they have some limitations. Because
-the connections are push-fit and temporary, they are not as reliable as soldered
-connections. If you are having intermittent problems with a circuit, it could be due
-to a poor connection on a breadboard.
+Breadboards come in various sizes and configurations. The simplest kind is just a grid of holes in a plastic block. Inside are strips of metal that provide electrical connection between holes in the shorter rows. Pushing the legs of two different components into the same row joins them together electrically. A deep channel running down the middle indicates that there is a break in connections there, meaning, you can push a chip in with the legs at either side of the channel without connecting them together. Some breadboards have two strips of holes running along the long edges of the board that are separated from the main grid. These have strips running down the length of the board inside and provide a way to connect a common voltage. They are usually in pairs for +5 volts and ground. These strips are referred to as rails and they enable you to connect power to many components or points in the board. While breadboards are great for prototyping, they have some limitations. Because the connections are push-fit and temporary, they are not as reliable as soldered connections. If you are having intermittent problems with a circuit, it could be due to a poor connection on a breadboard.
 
 #### LED:
 
-LEDs make great indicator lights. They use very little electricity and they pretty much
-last forever.
-In this lesson, you will use perhaps the most common of all LEDs: a 5 mm red LED.
-5 mm refers to the diameter of the LED. Other common sizes are 3 mm and 10 mm.
-You cannot directly connect an LED to a battery or voltage source because 1) the
-LED has a positive and a negative lead and will not light if placed the wrong way and
-2) an LED must be used with a resistor to limit or 'choke' the amount of current
-flowing through it; otherwise, it will burn out!
+LEDs make great indicator lights. They use very little electricity and they pretty much last forever.
+In this lesson, you will use perhaps the most common of all LEDs: a 5 mm red LED. 5 mm refers to the diameter of the LED. Other common sizes are 3 mm and 10 mm. You cannot directly connect an LED to a battery or voltage source because 1) the LED has a positive and a negative lead and will not light if placed the wrong way and 2) an LED must be used with a resistor to limit or 'choke' the amount of current flowing through it; otherwise, it will burn out!
 
 ![example](files/2.jpg)
 
-If you do not use a resistor with an LED, then it may well be destroyed almost
-immediately, as too much current will flow through, heating it and destroying the
-'junction' where the light is produced.
+If you do not use a resistor with an LED, then it may well be destroyed almost immediately, as too much current will flow through, heating it and destroying the 'junction' where the light is produced.
 There are two ways to tell which is the positive lead of the LED and which the
 negative.
 Firstly, the positive lead is longer.
