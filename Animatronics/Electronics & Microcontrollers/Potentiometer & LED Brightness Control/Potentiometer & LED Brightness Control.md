@@ -83,43 +83,35 @@ Experiment by:
 
 **Breadboard Schematic (Single LED Setup) — with breadboard positions:**
 
-```mermaid
-flowchart TD
-  subgraph ARD ["Arduino Mega 2560 (header side)"]
-    A5["5V pin"]
-    AG["GND pin"]
-    A0pin["A0 (analog)"]
-    D9["Pin 9 (PWM)"]
-  end
+```
+Arduino Mega 2560 header                Breadboard (rows 1..30, cols a..j)
+------------------------                ----------------------------------
+ 5V  (J1) ----------------------------> + rail (row 1, cols a-j)
+ GND (J2) ----------------------------> - rail (row 30, cols a-j)
+ A0  (J3) ----------------------------> Pot middle (row 10, col e)
+ D9  (J4) ----------------------------> Resistor end (row 15, col e)
 
-  subgraph BB ["Breadboard (rows 1..30, cols a..j)"]
-    PR["+ 5V rail (row 1, cols a-j)"]
-    GR["- GND rail (row 30, cols a-j)"]
-    PotL["Pot left — row 10, col d (connect to 5V)"]
-    PotM["Pot middle — row 10, col e (connect to A0)"]
-    PotR["Pot right — row 10, col f (connect to GND)"]
-    Res["Resistor 100Ω — row 15, cols e-f (one end to Pin 9 wire)"]
-    LED["LED anode — row 15, col f; cathode — row 15, col g (to GND rail)"]
-  end
+Breadboard component placement (example rows/cols):
+ - Potentiometer (3-pin) placed so pins occupy row 10 cols d,e,f
+    - Left pin  -> row10 col d  (wire to + rail / 5V)
+    - Middle pin-> row10 col e  (wire to Arduino A0)
+    - Right pin -> row10 col f  (wire to - rail / GND)
 
-  %% Arduino to breadboard jumpers (explicit wires)
-  A5 -->|"Wire: Arduino 5V -> + rail (use jumper to row 1, col a)"| PR
-  AG -->|"Wire: Arduino GND -> - rail (use jumper to row 30, col a)"| GR
-  A0pin -->|"Wire: Arduino A0 -> Pot middle (row10 col e)"| PotM
-  D9 -->|"Wire: Arduino D9 -> Resistor end (row15 col e)"| Res
+ - LED + Resistor chain placed at row 15:
+    - Resistor (100Ω) one end -> row15 col e (wire from D9)
+    - Resistor other end -> row15 col f (LED anode)
+    - LED cathode -> row15 col g (wire to GND rail)
 
-  %% Pot connections on breadboard
-  PR -->|"left pot pin -> row10 col d"| PotL
-  PotL --- PotM
-  PotM --- PotR
-  GR -->|"right pot pin -> row10 col f"| PotR
+Wiring summary (explicit jumpers):
+ - Jumper: Arduino 5V -> Breadboard + rail (row1 col a)
+ - Jumper: Arduino GND -> Breadboard - rail (row30 col a)
+ - Jumper: Arduino A0 -> Breadboard row10 col e (pot middle)
+ - Jumper: Arduino D9 -> Breadboard row15 col e (resistor)
+ - Jumper: Breadboard row30 (GND rail) -> Breadboard row15 col g (LED cathode)
 
-  %% Resistor + LED to GND
-  Res --> LED
-  LED -->|"cathode -> GND rail (row30 col a-j)"| GR
-
-  classDef hw fill:#f9f,stroke:#333;
-  class ARD,BB hw;
+Notes:
+ - Use the indicated rows/cols as a consistent classroom example; students may place components on nearby rows but should keep connections consistent.
+ - On many breadboards the left/right power rails run the length; use the same labeled row for clarity.
 ```
 
 -   Click **Build** then **Upload and Monitor** in the PlatformIO pane.
@@ -164,47 +156,42 @@ flowchart TD
 
 **Breadboard Schematic (Dual LED Setup) — with breadboard positions:**
 
-```mermaid
-flowchart TD
-  subgraph ARD ["Arduino Mega 2560 (header side)"]
-    A5["5V pin"]
-    AG["GND pin"]
-    A0pin["A0 (analog)"]
-    D9["Pin 9 (PWM)"]
-    D10["Pin 10 (PWM)"]
-  end
+```
+Arduino Mega 2560 header                Breadboard (rows 1..30, cols a..j)
+------------------------                ----------------------------------
+ 5V  (J1) ----------------------------> + rail (row 1, cols a-j)
+ GND (J2) ----------------------------> - rail (row 30, cols a-j)
+ A0  (J3) ----------------------------> Pot middle (row 10, col e)
+ D9  (J4) ----------------------------> Resistor1 end (row 15, col e)
+ D10 (J5) ----------------------------> Resistor2 end (row 17, col e)
 
-  subgraph BB ["Breadboard (rows 1..30, cols a..j)"]
-    PR["+ 5V rail (row 1, cols a-j)"]
-    GR["- GND rail (row 30, cols a-j)"]
-    PotL["Pot left — row 10, col d (connect to 5V)"]
-    PotM["Pot middle — row 10, col e (connect to A0)"]
-    PotR["Pot right — row 10, col f (connect to GND)"]
-    R1["Resistor1 100Ω — row 15, cols e-f (to Pin 9)"]
-    LED1["Red LED anode — row15 col f; cathode — row15 col g (to GND)"]
-    R2["Resistor2 100Ω — row 17, cols e-f (to Pin 10)"]
-    LED2["Green LED anode — row17 col f; cathode — row17 col g (to GND)"]
-  end
+Breadboard component placement (example rows/cols):
+ - Potentiometer placed so pins occupy row 10 cols d,e,f
+    - Left pin  -> row10 col d  (wire to + rail / 5V)
+    - Middle pin-> row10 col e  (wire to Arduino A0)
+    - Right pin -> row10 col f  (wire to - rail / GND)
 
-  %% Arduino to breadboard jumpers
-  A5 -->|"Wire: Arduino 5V -> + rail (row1 col a)"| PR
-  AG -->|"Wire: Arduino GND -> - rail (row30 col a)"| GR
-  A0pin -->|"Wire: Arduino A0 -> Pot middle (row10 col e)"| PotM
-  D9 -->|"Wire: Arduino D9 -> Resistor1 row15 col e"| R1
-  D10 -->|"Wire: Arduino D10 -> Resistor2 row17 col e"| R2
+ - Red LED + Resistor chain at row 15:
+    - Resistor1 one end -> row15 col e (wire from D9)
+    - Resistor1 other end -> row15 col f (Red LED anode)
+    - Red LED cathode -> row15 col g (wire to GND rail)
 
-  %% Pot connections
-  PR -->|"left pot pin -> row10 col d"| PotL
-  PotL --- PotM
-  PotM --- PotR
-  GR -->|"right pot pin -> row10 col f"| PotR
+ - Green LED + Resistor chain at row 17:
+    - Resistor2 one end -> row17 col e (wire from D10)
+    - Resistor2 other end -> row17 col f (Green LED anode)
+    - Green LED cathode -> row17 col g (wire to GND rail)
 
-  %% LEDs to GND
-  R1 --> LED1 -->|"cathode -> GND rail (row30 cols)"| GR
-  R2 --> LED2 -->|"cathode -> GND rail (row30 cols)"| GR
+Wiring summary (explicit jumpers):
+ - Jumper: Arduino 5V -> Breadboard + rail (row1 col a)
+ - Jumper: Arduino GND -> Breadboard - rail (row30 col a)
+ - Jumper: Arduino A0 -> Breadboard row10 col e (pot middle)
+ - Jumper: Arduino D9 -> Breadboard row15 col e (resistor1)
+ - Jumper: Arduino D10 -> Breadboard row17 col e (resistor2)
+ - Jumper: Breadboard row30 (GND rail) -> Breadboard row15 col g (LED cathodes)
 
-  classDef hw fill:#f9f,stroke:#333;
-  class ARD,BB hw;
+Notes:
+ - Use the indicated rows/cols as a consistent classroom example; students may place components on nearby rows but should keep connections consistent.
+ - On many breadboards the left/right power rails run the length; use the same labeled row for clarity.
 ```
 
 **Code Challenge:**
