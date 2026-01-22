@@ -1,4 +1,4 @@
-# Lesson 4 RGB LED
+# RGB LED
 
 ## Overview
 
