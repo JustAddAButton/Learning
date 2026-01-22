@@ -5,7 +5,7 @@
 -   **[2. LED](https://github.com/JustAddAButton/Learning/blob/main/Animatronics/Electronics%20%26%20Microcontrollers/LED/LED.md)** 
 
 
--   **[3. LED](https://github.com/JustAddAButton/Learning/blob/main/Animatronics/Electronics%20%26%20Microcontrollers/LED/LED.md)** 
+-   **[3. LED RGB](https://github.com/JustAddAButton/Learning/blob/main/Animatronics/Electronics%20%26%20Microcontrollers/LED%20RGB/LED%20RGB.md)** 
 
 ### 🔨 Tools & Examples
 
