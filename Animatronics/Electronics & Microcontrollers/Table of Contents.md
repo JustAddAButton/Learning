@@ -9,7 +9,7 @@
 
 -   **[4. Digital Inputs](https://github.com/JustAddAButton/Learning/blob/main/Animatronics/Electronics%20%26%20Microcontrollers/Digital%20Inputs/Digital%20Inputs.md)** 
 
--   **[5. Active Buzzer](https://github.com/JustAddAButton/Learning/blob/main/Animatronics/Electronics%20%26%20Microcontrollers/LED%20RGB/LED%20RGB.md)** 
+-   **[5. Active Buzzer](https://github.com/JustAddAButton/Learning/blob/main/Animatronics/Electronics%20%26%20Microcontrollers/Active%20Buzzer/Active%20Buzzer.md)** 
 
 ### 🔨 Tools & Examples
 
