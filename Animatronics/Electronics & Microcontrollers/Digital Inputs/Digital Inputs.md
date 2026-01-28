@@ -54,17 +54,31 @@ connects the input pin to GND, so that it is no longer HIGH.
 
 Since the input is normally HIGH and only goes LOW when the button is pressed, the logic is a little upside down. We will handle this in the 'loop'function.
 ```C++
-void loop()
+int ledPin = 5;
+int buttonApin = 9;
+int buttonBpin = 8;
+
+byte leds = 0;
+
+void setup() 
 {
-    if (digital Read(button pin) == LOW)
-    {
-        digital Write(led Pin, HIGH);
-    }
-    if (digital Read(button pin) == LOW)
-    {
-        digitalWrite(led Pin, LOW);
-    }
+  pinMode(ledPin, OUTPUT);
+  pinMode(buttonApin, INPUT_PULLUP);  
+  pinMode(buttonBpin, INPUT_PULLUP);  
 }
+
+void loop() 
+{
+  if (digitalRead(buttonApin) == LOW)
+  {
+    digitalWrite(ledPin, HIGH);
+  }
+  if (digitalRead(buttonBpin) == LOW)
+  {
+    digitalWrite(ledPin, LOW);
+  }
+}
+
 ```
 In the 'loop' function there are two 'if' statements. One for each button. Each does an 'digitalRead' on the appropriate input.
 
