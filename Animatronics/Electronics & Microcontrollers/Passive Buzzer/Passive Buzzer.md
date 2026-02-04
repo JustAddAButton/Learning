@@ -35,6 +35,8 @@ We should be careful not to use the MEGA 2560 R3 board analog Write () function
 
 Wiring the buzzer connected to the MEGA 2560 R3 board, the red (positive) to the pin8, black wire (negative) to the GND.
 
+![example](files/4.jpg)
+
 ### Code
 
 ```C++
