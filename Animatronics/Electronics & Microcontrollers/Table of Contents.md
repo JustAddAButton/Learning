@@ -11,6 +11,10 @@
 
 -   **[5. Active Buzzer](https://github.com/JustAddAButton/Learning/blob/main/Animatronics/Electronics%20%26%20Microcontrollers/Active%20Buzzer/Active%20Buzzer.md)** 
 
+-   **[6. Passive Buzzer](https://github.com/JustAddAButton/Learning/blob/main/Animatronics/Electronics%20%26%20Microcontrollers/Passive%20Buzzer/Passive%20Buzzer.md)** 
+
+-   **[7. Tilt Ball Switch](https://github.com/JustAddAButton/Learning/blob/main/Animatronics/Electronics%20%26%20Microcontrollers/Tilt%20Ball%20Switch/Tilt%20Ball%20Switch.md)** 
+
 ### 🔨 Tools & Examples
 
 -   [VSCode](https://code.visualstudio.com/download)
