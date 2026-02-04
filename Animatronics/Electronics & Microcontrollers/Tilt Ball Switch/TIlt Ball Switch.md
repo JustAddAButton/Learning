@@ -33,6 +33,8 @@ While not as precise or flexible as a full accelerometer, tilt switches can dete
 
 ![example](files/3.jpg)
 
+![example](files/4.jpg)
+
 ### Code
 
 ```C++
